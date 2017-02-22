@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by donaldarmstrong on 2/21/17.
  */
-public class Donnie {
+public class ScratchPad {
     static int MAX_X = 3;
     static int MAX_Y = 3;
 

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Created by donaldarmstrong on 2/21/17.
  */
-public class WordBoggle {
+public class ExampleWordBoggle {
     static public List<String> dictionary = Arrays.asList("GEEKS", "FOR", "QUIZ", "GO");
     static String[] letterList = new String[]{"G", "I", "Z", "U", "E", "K", "Q", "S", "E"};
     static BoggleCell[] boggleCells;
@@ -28,15 +28,15 @@ public class WordBoggle {
         BoggleCell _8 = new BoggleCell("E");
 
         // relate the cells
-        _0.related = new BoggleCell[]{_1, _3, _4};
-        _1.related = new BoggleCell[]{_0, _3, _4, _5, _2};
-        _2.related = new BoggleCell[]{_1, _4, _5};
-        _3.related = new BoggleCell[]{_0, _1, _4, _7, _6};
-        _4.related = new BoggleCell[]{_0, _1, _2, _3, _5, _6, _7, _8};
-        _5.related = new BoggleCell[]{_2, _1, _4, _7, _8};
-        _6.related = new BoggleCell[]{_3, _4, _7};
-        _7.related = new BoggleCell[]{_6, _3, _4, _5, _8};
-        _8.related = new BoggleCell[]{_5, _4, _7};
+        _0.related = Arrays.asList(_1, _3, _4);
+        _1.related = Arrays.asList(_0, _3, _4, _5, _2);
+        _2.related = Arrays.asList(_1, _4, _5);
+        _3.related = Arrays.asList(_0, _1, _4, _7, _6);
+        _4.related = Arrays.asList(_0, _1, _2, _3, _5, _6, _7, _8);
+        _5.related = Arrays.asList(_2, _1, _4, _7, _8);
+        _6.related = Arrays.asList(_3, _4, _7);
+        _7.related = Arrays.asList(_6, _3, _4, _5, _8);
+        _8.related = Arrays.asList(_5, _4, _7);
 
         // create the boggle board
         boggleCells = new BoggleCell[]{_0, _1, _2, _3, _4, _5, _6, _7, _8};
