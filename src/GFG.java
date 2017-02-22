@@ -9,6 +9,8 @@ import java.util.stream.Stream;
  * Created by donaldarmstrong on 2/21/17.
  */
 public class GFG {
+    static boolean DEBUG = false;
+
     static class BoggleCell {
         String letter;
         List<BoggleCell> related;
@@ -41,20 +43,16 @@ public class GFG {
             String[] wordList = testConfiguration.readLine().split("\\s");
             HashSet<String> dict = new HashSet<>(Arrays.asList(wordList));
 
-            // print the dictionary
-            for(String word: dict) {
-                System.out.println("word=" + word);
+            if (DEBUG) {
+                // print the dictionary
+                for (String word : dict) {
+                    System.out.println("word=" + word);
+                }
             }
 
-// this did not work
-//            if (numWordsInDict != dict.size()) {
-//                dict.stream().forEach(word -> System.out.println("w=" + word));
-//                throw new RuntimeException("Expected dictionary size " + numWordsInDict + " does not match actual " + dict.size());
-//            }
-
             String[] xy = testConfiguration.readLine().split("\\s");
-            int maxY = Integer.parseInt((xy[0]));
-            int maxX = Integer.parseInt((xy[1]));
+            int maxX = Integer.parseInt((xy[0]));
+            int maxY = Integer.parseInt((xy[1]));
 
             String[] letters = testConfiguration.readLine().split("\\s");
             List<String> letterList = Arrays.asList(letters);
@@ -112,10 +110,12 @@ public class GFG {
             }
         }
 
-        // print the boggle board
-//        for (BoggleCell cell: boggleCells) {
-//            System.out.println("board cell=" + cell);
-//        }
+        if (DEBUG) {
+            // print the boggle board
+            for (BoggleCell cell : boggleCells) {
+                System.out.println("board cell=" + cell);
+            }
+        }
 
         return boggleCells;
     }
@@ -123,7 +123,9 @@ public class GFG {
     private static void findWords(BoggleCell currentCell, String wordSoFar, List<BoggleCell> positionsAlreadyVisited, Set<String> foundWords, Set<String> dict) {
         // if already visited, throw it away
         if (positionsAlreadyVisited.contains(currentCell)) {
-//            System.out.println("already visited=" + currentCell);
+            if (DEBUG) {
+                System.out.println("already visited=" + currentCell);
+            }
             return;
         }
 
@@ -144,7 +146,10 @@ public class GFG {
             return;
         }
 
-        //System.out.println("possible word=" + possibleWord + " " + dict.contains(possibleWord));
+        if (DEBUG) {
+            System.out.println("possible word=" + possibleWord + " " + dict.contains(possibleWord));
+        }
+
         // is current word in dictionary
         if (dict.contains(possibleWord)) {
             foundWords.add(possibleWord);
@@ -152,10 +157,12 @@ public class GFG {
 
         // for each connected cell
         for (BoggleCell boggleCell : currentCell.related) {
-//            System.out.println("walking from " + currentCell + " to " + boggleCell);
-//            for (BoggleCell visited: positionsAlreadyVisited) {
-//                System.out.println("visited=" + visited);
-//            }
+            if (DEBUG) {
+                System.out.println("walking from " + currentCell + " to " + boggleCell);
+                for (BoggleCell visited: positionsAlreadyVisited) {
+                    System.out.println("visited=" + visited);
+                }
+            }
 
             // my visited positions
             List<BoggleCell> myVisitedPositions = new ArrayList<>(positionsAlreadyVisited);
